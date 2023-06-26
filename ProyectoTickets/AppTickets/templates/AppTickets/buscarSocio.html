@@ -1,0 +1,28 @@
+
+<div>
+    {% extends "AppTickets/inicio.html" %}
+    {% load static %}
+    
+        {% block buscarSocio %}      
+            
+       
+        <p style="color:aliceblue;">Buscar Socio</p>
+        <form action="/AppTickets/buscar/" method="GET">
+            <input placeholder="DNI" type="number" name="dni" id="dni">
+            <input type="submit" value="Buscar">
+        </form>
+
+        {% if socios %}
+            {% for socio in socios %}
+                <li style="color:aliceblue;"> {{socio.nombre}} </li>
+                <li style="color:aliceblue;"> {{socio.apellido}} </li>
+                <li style="color:aliceblue;"> {{socio.email}} </li>
+            {% endfor %}
+        {% endif %}
+
+
+        
+        {% endblock %}          
+    
+        
+</div>

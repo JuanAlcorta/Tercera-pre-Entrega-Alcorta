@@ -7,4 +7,6 @@ urlpatterns = [
     path('clubs/', clubs, name="Clubs"),
     path('socios/', socios,name="Socios"),
     path('partidos/', partidos, name="Partidos"),
+    path('buscar/', buscar, name="Buscar"),
+    path('buscarSocio/', buscarSocio, name="BuscarSocio"),
 ]

@@ -29,10 +29,34 @@
             </div>
         </div>
     </nav>
+
     <div class="contenido">
         {% block contenidoQueCambia %}
         {% endblock %}
     </div>
+
+    <p style="color:aliceblue;">Buscar Socio</p>
+        <form action="/AppTickets/buscar/" method="GET">
+            <input placeholder="DNI" type="number" name="dni" id="dni">
+            <input type="submit" value="Buscar">
+        </form>
+
+        {% if socios %}
+            {% for socio in socios %}
+                <li style="color:aliceblue;"> {{socio.nombre}} </li>
+                <li style="color:aliceblue;"> {{socio.apellido}} </li>
+                <li style="color:aliceblue;"> {{socio.email}} </li>
+            {% endfor %}
+        
+        {% endif %}
+        <p style="color:red">{{respuesta}}</p>
+
+
+    <div class="busqueda">
+        {% block buscarSocio %}
+        {% endblock %}
+    </div>
+
     <footer></footer>
 </body>
 </html>
