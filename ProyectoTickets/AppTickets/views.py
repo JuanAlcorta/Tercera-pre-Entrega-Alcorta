@@ -16,7 +16,8 @@ def socios(request):
             informacion = miFormulario.cleaned_data
             socio = Socio(nombre=informacion["nombre"],apellido=informacion["apellido"],dni=informacion["dni"],email=informacion["email"])
             socio.save()
-            return render(request,"AppTickets/inicio.html")
+            miFormulario=CargaSocio()
+            return render(request,"AppTickets/socios.html",{"miFormulario":miFormulario})
     else:
         miFormulario = CargaSocio()
     return render(request, "AppTickets/socios.html",{"miFormulario":miFormulario})
@@ -30,7 +31,8 @@ def partidos(request):
             informacion = miFormulario.cleaned_data
             partido = Partido(equipoLocal=informacion["equipoLocal"],equipoVisitante=informacion["equipoVisitante"],fechaPartido=informacion["fechaPartido"],horarioPartido=informacion["horarioPartido"])
             partido.save()
-            return render(request,"AppTickets/inicio.html")
+            miFormulario=CargaPartido()
+            return render(request,"AppTickets/partidos.html",{"miFormulario":miFormulario})
     else:
         miFormulario = CargaPartido()
     return render(request, "AppTickets/partidos.html",{"miFormulario":miFormulario})
@@ -43,7 +45,8 @@ def clubs(request):
             informacion = miFormulario.cleaned_data
             club = Club(nombreClub=informacion["nombreClub"],nombreEstadio=informacion["nombreEstadio"],direccionEstadio=informacion["direccionEstadio"],capacidadEstadio=informacion["capacidadEstadio"])
             club.save()
-            return render(request,"AppTickets/inicio.html")
+            miFormulario=CargaClub()
+            return render(request,"AppTickets/clubs.html",{"miFormulario":miFormulario})
     else:
         miFormulario = CargaClub()
     return render(request, "AppTickets/clubs.html",{"miFormulario":miFormulario})
@@ -58,6 +61,5 @@ def buscar(request):
         return render(request,"AppTickets/inicio.html",{"socios":socios})
     else:
         respuesta = "No se enviaron datos"
-
-    #respuesta = f"Buscando Socio DNI {request.GET['dni']}"
+    
     return render (request, "AppTickets/inicio.html", {"respuesta":respuesta})
